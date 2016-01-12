@@ -38,16 +38,16 @@ if (defined('ENVIRONMENT')) {
             break;
 
         case 'testing':
-           
-            $config['admin_name']           = "";
-            $config['admin_email']          = "";
-            $config['admin_contact_phone']  = "";
+            $config['base_url'] = "";   // here test server url 
+            $config['admin_name'] = "";
+            $config['admin_email'] = "";
+            $config['admin_contact_phone'] = "";
             break;
         case 'production':
-            
-            $config['admin_name']           = "";
-            $config['admin_email']          = "";
-            $config['admin_contact_phone']  = "";
+            $config['base_url'] = "";   // here production server url
+            $config['admin_name'] = "";
+            $config['admin_email'] = "";
+            $config['admin_contact_phone'] = "";
             break;
 
         default:
