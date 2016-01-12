@@ -23,7 +23,8 @@ class Welcome extends CI_Controller {
 
     public function index() {
         $this->template->set_template('admin');
-        
+        $this->template->write_view('content', 'admin/dashboard', $this->gen_contents);
+        $this->template->render();
     }
 
 }
