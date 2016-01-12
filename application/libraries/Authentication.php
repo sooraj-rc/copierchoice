@@ -95,25 +95,23 @@ class Authentication {
         }
         $emailid = $login['username'];
         $password = $login['password'];
-        $this->CI->db->select("username AS USERNAME, admin_id as USERID, first_name as NAME, status as STATUS, profile_image ");
+        $this->CI->db->select("username AS USERNAME, id as USERID, administrator as NAME, status as STATUS ");
         $this->CI->db->where('username', $emailid);
         $password = $this->CI->db->escape_like_str($password);
-        $password = '365Pass' . $password;
-        $this->CI->db->where("password = (SELECT SHA2(CONCAT('$password',`encrypt_time`), 256))", NULL, false);
-        $select_query = $this->CI->db->get('admin_user_details');
+        //$password = 'cc' . $password;
+        $this->CI->db->where("password = '$password'", NULL, false);
+        $select_query = $this->CI->db->get('administrators');
         if (0 < $select_query->num_rows()) {
             $row = $select_query->row();
             if ($row->STATUS == 'A') {
-                $this->CI->db->where('admin_id', $row->USERID);
+                $this->CI->db->where('id', $row->USERID);
                 $arr['last_login_date'] = date('Y-m-d H:i:s');
-                $this->CI->db->update('admin_user_details', $arr);
+                $this->CI->db->update('administrators', $arr);
                 $session_data = array(
                     'ADMIN_USERNAME' => $row->USERNAME,
                     'ADMIN_NAME' => $row->NAME,
                     'ADMIN_USERID' => $row->USERID,
                     'ADMIN_STATUS' => $row->STATUS,
-                    'ADMIN_STATUS' => $row->STATUS,
-                    'ADMIN_PROFILE_IMAGE' => $row->profile_image,
                     'last_activity' => time()
                 );
                 $this->CI->session->set_userdata($session_data);
@@ -143,7 +141,7 @@ class Authentication {
             'USER_PROFILE_IMAGE' => ''
         );
         unset(
-                $_SESSION['USER_EMAIL'], $_SESSION['USER_PROFILE_IMAGE'], $_SESSION['USER_NAME'], $_SESSION['USER_ID'], $_SESSION['ADMIN_APPROVE'], $_SESSION['USER_STATUS'], $_SESSION['last_activity'], $_SESSION['fb_data']
+                $_SESSION['USER_EMAIL'], $_SESSION['USER_NAME'], $_SESSION['USER_ID'], $_SESSION['ADMIN_APPROVE'], $_SESSION['USER_STATUS'], $_SESSION['last_activity'], $_SESSION['fb_data']
         );
         $this->CI->session->unset_userdata($session_data);
         return TRUE;
@@ -304,8 +302,8 @@ class Authentication {
         $status = 'A';
         $this->CI->db->select("status");
         $this->CI->db->where('status', 'A');
-        $this->CI->db->where('admin_id', $user_id);
-        $select_query = $this->CI->db->get('admin_user_details');
+        $this->CI->db->where('id', $user_id);
+        $select_query = $this->CI->db->get('administrators');
         if (0 < $select_query->num_rows()) {
             $row = $select_query->row();
             $session_data['ADMIN_STATUS'] = $row->status;

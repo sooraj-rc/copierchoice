@@ -10,3 +10,8 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
   `data` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+ALTER TABLE `administrators` ADD `status` CHAR( 1 ) NOT NULL DEFAULT 'A' AFTER `email`;
+
+ALTER TABLE `administrators` ADD `last_login_date` DATETIME NOT NULL AFTER `email`;

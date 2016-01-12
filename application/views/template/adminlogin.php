@@ -24,34 +24,66 @@
         <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/jquery.news-ticker.css">
         
     </head>
-    <body>
+    <body style="background: #1D3962 !important">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-6 col-md-offset-3" style="margin-top: 75px;">
-
+                        <center>
+                            <img src="<?php echo base_url(); ?>assets/images/CClogo_nobg_400x91.png" class="img-responsive" width="300">
+                            <!--<img src="<?php echo base_url(); ?>assets/images/leads_2_sales_au (235 x 82).png" class="img-responsive">-->
+                        </center>
+                        <br>
                         <div class="panel panel-blue">
                             <div class="panel-heading">
                                 Admin Login</div>
                             <div class="panel-body pan">
-                                <form action="#" class="form-horizontal">
+                                <?php
+                                    $error = f('error_message') ? f('error_message') : validation_errors();
+                                ?>
+                                <?php if(!empty($error)) { ?>
+                                        <div class="alert alert-danger">
+                                            <?php echo $error; ?>
+                                        </div>
+                                <?php } ?>
+                                <?php 
+                                    $form_init = array(
+                                        "class"     => "form-horizontal"
+                                    );
+                                    echo form_open(base_url()."admin",$form_init);
+                                ?>
                                     <div class="form-body pal">
                                         <div class="form-group">
-                                            <label for="inputName" class="col-md-3 control-label">
-                                                Username</label>
+                                            <label for="inputName" class="col-md-3 control-label">Username</label>
                                             <div class="col-md-9">
                                                 <div class="input-icon right">
                                                     <i class="fa fa-user"></i>
-                                                    <input id="inputName" placeholder="" class="form-control" type="text"></div>
+                                                    <?php
+                                                        $username = array(
+                                                            "name"  => "admin_username",
+                                                            "placeholder"=>"Username",
+                                                            "class" => "form-control"
+                                                        );
+                                                        echo form_input($username);
+                                                    ?>
+                                                    
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputPassword" class="col-md-3 control-label">
-                                                Password</label>
+                                            <label for="inputPassword" class="col-md-3 control-label">Password</label>
                                             <div class="col-md-9">
                                                 <div class="input-icon right">
                                                     <i class="fa fa-lock"></i>
-                                                    <input id="inputPassword" placeholder="" class="form-control" type="password"></div>
+                                                    <?php
+                                                        $password = array(
+                                                            "name"  => "admin_password",
+                                                            "placeholder"=>"Password",
+                                                            "class" => "form-control"
+                                                        );
+                                                        echo form_password($password);
+                                                    ?>
+                                                </div>
                                                 <span class="help-block mbn"><a href="#"><small>Forgot password?</small> </a></span>
                                             </div>
                                         </div>
@@ -64,7 +96,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                <?php
+                                    echo form_close();
+                                ?>
                             </div>
                         </div>
                     </div>

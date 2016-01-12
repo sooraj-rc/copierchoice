@@ -22,6 +22,9 @@ class Welcome extends CI_Controller {
     var $gen_contents = array();
 
     public function index() {
+        //$this->load->model('admin/admin_model');
+        (!$this->authentication->check_logged_in("admin", false)) ? redirect('admin') : '';
+        $this->gen_contents['page_heading'] = 'Dashboard';
         $this->template->set_template('admin');
         $this->template->write_view('content', 'admin/dashboard', $this->gen_contents);
         $this->template->render();

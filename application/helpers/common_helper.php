@@ -2,104 +2,9 @@
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Function to Compress admin Javascript
+ * This function will return date & time 
+ * 
  */
-function load_js_files_direct_admin($js_files = array()) {
-   
-    $ci = &get_instance();
-     
-    if(((strpos($ci->uri->segment(2),'review_reports') !== false)  && $ci->uri->segment(3) == 3) || (strpos($ci->uri->segment(2),'survey_reports') !== false) || (strpos($ci->uri->segment(2),'review_reports_average') !== false) || (strpos($ci->uri->segment(2),'promotion_reports') !== false)){
-     
-        if(!empty($js_files)){
-            $js_files = array_merge($js_files,array('admin/js/download.js','admin/js/jquery-1.10.2.js','admin/js/jquery-ui.js'));
-        } else{
-            $js_files = array('admin/js/download.js','admin/js/jquery-1.10.2.js','admin/js/jquery-ui.js');
-        }
-    }
-    array_unshift($js_files, 'admin/js/jquery-1.11.2.min.js', 'admin/js/materialize.js', 
-            'admin/js/prism.js', 'admin/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js', 'admin/js/plugins/chartist-js/chartist.min.js', 'forntend/js/jquery.tokeninput.js','admin/js/common.js','admin/js/custom.js');
-
-    $js_files = array_unique($js_files);
-
-    $act_filename = '';
-    foreach ($js_files as $files) {
-        if (!empty($files))
-            $act_filename .= '<script type="text/javascript" src="' . c("theme_assets_url") . $files . '?v=' . c("release-version") . '"></script>' . "\n";
-    }
-    return $act_filename;
-}
-
-function load_css_files_direct_admin($css_files = array()) {
-   
-    $ci = &get_instance();
-    
-    if((strpos($ci->uri->segment(2),'review_reports') !== false) && $ci->uri->segment(3) == 3){
-        if(!empty($css_files)){
-            $css_files = array_merge($css_files,array('admin/css/jquery-ui-1.10.4.custom.min.css'));
-        } else{
-            $css_files = array('admin/css/jquery-ui-1.10.4.custom.min.css');
-        }
-    } 
-    
-    if(strpos($ci->uri->segment(2),'survey_reports') !== false){
-        if(!empty($css_files)){
-            $css_files = array_merge($css_files,array('admin/css/master.css'));
-        } else{
-            $css_files = array('admin/css/master.css');
-        }
-    }
-    
-    if(!empty($css_files)){
-        array_unshift($css_files, 'admin/css/materialize.css', 'admin/css/style.css', 'admin/css/custom-style.css', 'admin/js/plugins/perfect-scrollbar/perfect-scrollbar.css','forntend/css/token-input-facebook.css','forntend/css/token-input-txtinput.css','forntend/css/token-input.css' );
-    }else{
-        $css_files = array('admin/css/materialize.css', 'admin/css/style.css', 'admin/css/custom-style.css', 'admin/js/plugins/perfect-scrollbar/perfect-scrollbar.css','forntend/css/token-input-facebook.css','forntend/css/token-input-txtinput.css','forntend/css/token-input.css');
-    }
-    $css_files = array_unique($css_files);
-    $act_filename = '';
-    foreach ($css_files as $files) {
-        $act_filename .= '<link href="' . c("theme_assets_url") . $files . '?v=' . c("release-version") . '" type="text/css" rel="stylesheet" media="screen,projection">' . "\n";
-    }
-    return $act_filename;
-}
-function load_js_files_direct($js_files = array()) {
-    array_unshift($js_files, 'js/jquery-2.1.3.min.js',
-	'bootstrap/js/bootstrap.min.js',
-	'js/jquery.mb.YTPlayer.min.js',
-	'js/appear.js',
-	'js/jquery.simple-text-rotator.min.js',
-	'js/jqBootstrapValidation.js',
-	'js/isotope.pkgd.min.js',
-	'js/imagesloaded.pkgd.js',
-	'js/jquery.flexslider-min.js',
-	'js/jquery.magnific-popup.min.js',
-	'js/jquery.fitvids.js',
-	'js/smoothscroll.js',
-	'js/wow.min.js',
-	'js/owl.carousel.min.js',
-         'global/plugins/jquery-slimscroll/jquery.slimscroll.min.js');
-    $js_files = array_unique($js_files);
-
-    $act_filename = '';
-    foreach ($js_files as $files) {
-        if (!empty($files))
-            $act_filename .= '<script type="text/javascript" src="' . c("theme_assets_url") . $files . '?v=' . c("release-version") . '"></script>' . "\n";
-    }
-    return $act_filename;
-}
-
-function load_css_files_direct($css_files = array()) {
-    array_unshift($css_files, 'bootstrap/css/bootstrap.min.css', 'css/simpletextrotator.css',
-                 'css/font-awesome.min.css', 'css/et-line-font.css', 'css/magnific-popup.css', 'css/flexslider.css',
-                 'css/owl.carousel.css', 'css/animate.css');
-   
-    $css_files = array_unique($css_files);
-    $act_filename = '';
-    foreach ($css_files as $files) {
-        $act_filename .= '<link href="' . c("theme_assets_url") . $files . '?v=' . c("release-version") . '" rel="stylesheet">' . "\n";
-    }
-    return $act_filename;
-}
-
 function clear_cache() {
     $CI = &get_instance();
     $CI->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
@@ -108,15 +13,13 @@ function clear_cache() {
 
 /**
  * This function will return date & time 
- *  */
+ */
 function get_cur_date_time($time=true) {
     //return ($time ==  true) ? date('Y-m-d H:i:s') : date('Y-m-d');
     if ($time)
         return date('Y-m-d H:i:s', (mktime(gmdate('H'), gmdate('i'), gmdate('s'), gmdate('m'), gmdate('d'), gmdate('Y'))));
-        //return date('Y-m-d H:i:s', (mktime(gmdate('H') + 4, gmdate('i'), gmdate('s'), gmdate('m'), gmdate('d'), gmdate('Y'))));
     else
         return date('Y-m-d', (mktime(gmdate('H'), gmdate('i'), gmdate('s'), gmdate('m'), gmdate('d'), gmdate('Y'))));
-        //return date('Y-m-d', (mktime(gmdate('H') + 4, gmdate('i'), gmdate('s'), gmdate('m'), gmdate('d'), gmdate('Y'))));
 }
 
 function mysql_date_format($date, $time = false){
@@ -137,12 +40,12 @@ if (!function_exists('admin_url')) {
 }
 
 function assets_url() {
-    return get_instance()->config->item('theme_assets_url');
+    return get_instance()->config->item('assets_url');
 }
 
 // creating password using 
 function create_secure_password($pass) {
-    $pass = '365Pass' . $pass;
+    $pass = 'cc' . $pass;
     $hash = hash('sha256', $pass);
     return $hash;
 }

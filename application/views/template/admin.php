@@ -35,7 +35,7 @@
                 <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
                     <div class="navbar-header">
                         <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                        <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">Copier Choice</span><span style="display: none" class="logo-text-icon">µ</span></a></div>
+                        <a id="logo" href="/admin" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">Copier Choice</span><span style="display: none" class="logo-text-icon">µ</span></a></div>
                     <div class="topbar-main"><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
 
                         <form id="topbar-search" action="" method="" class="hidden-sm hidden-xs">
@@ -52,7 +52,7 @@
                             <li class="dropdown"><a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-tasks fa-fw"></i><span class="badge badge-yellow">8</span></a>
 
                             </li>
-                            <li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/avatar/48.jpg" alt="" class="img-responsive img-circle"/>&nbsp;<span class="hidden-xs">Robert John</span>&nbsp;<span class="caret"></span></a>
+                            <li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="<?php echo assets_url();  ?>images/avatar/48.jpg" alt="" class="img-responsive img-circle"/>&nbsp;<span class="hidden-xs">Robert John</span>&nbsp;<span class="caret"></span></a>
                                 <ul class="dropdown-menu dropdown-user pull-right">
                                     <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
                                     <li><a href="#"><i class="fa fa-calendar"></i>My Calendar</a></li>
@@ -60,7 +60,7 @@
                                     <li><a href="#"><i class="fa fa-tasks"></i>My Tasks<span class="badge badge-success">7</span></a></li>
                                     <li class="divider"></li>
                                     <li><a href="#"><i class="fa fa-lock"></i>Lock Screen</a></li>
-                                    <li><a href="Login.html"><i class="fa fa-key"></i>Log Out</a></li>
+                                    <li><a href="<?php echo admin_url(); ?>logout"><i class="fa fa-key"></i>Log Out</a></li>
                                 </ul>
                             </li>
                             <li id="topbar-chat" class="hidden-xs"><a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat"><i class="fa fa-comments"></i><span class="badge badge-info">3</span></a></li>
@@ -178,14 +178,14 @@
                             <ul class="chat-box-body">
                                 <li>
                                     <p>
-                                        <img src="images/avatar/128.jpg" class="avt" /><span class="user">John Doe</span><span
+                                        <img src="<?php echo assets_url();  ?>images/avatar/128.jpg" class="avt" /><span class="user">John Doe</span><span
                                             class="time">09:33</span></p>
                                     <p>
                                         Hi Swlabs, we have some comments for you.</p>
                                 </li>
                                 <li class="odd">
                                     <p>
-                                        <img src="images/avatar/48.jpg" class="avt" /><span class="user">Swlabs</span><span
+                                        <img src="<?php echo assets_url();  ?>images/avatar/48.jpg" class="avt" /><span class="user">Swlabs</span><span
                                             class="time">09:33</span></p>
                                     <p>
                                         Hi, we're listening you...</p>
@@ -202,7 +202,7 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title"><?php echo $page_title; ?></div>
+                            <div class="page-title"><?php echo $page_heading; ?></div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
