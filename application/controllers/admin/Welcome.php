@@ -44,12 +44,13 @@ class Welcome extends CI_Controller {
                 );
                 $response = $this->admin_model->process_category("add",$catdata);
                 if($response == "added"){
+                    redirect("admin/categories");
                 }
                 else if($response == "exists"){
                     sf('error_message', 'Sorry! This category name already exists');
                 }
             }
-            redirect("admin/categories");
+   
         }
         // Category edit area
         if($mode == "edit"){
@@ -69,12 +70,11 @@ class Welcome extends CI_Controller {
                 );
                 $response = $this->admin_model->process_category("edit",$catdata);
                 if($response == "edited"){
-                    
+                    redirect("admin/categories");
                 }
                 else if($response == "exists"){
                     sf('error_message', 'Sorry! This category name already exists');
                 }
-                redirect("admin/categories");
             }
             
         }
@@ -84,7 +84,7 @@ class Welcome extends CI_Controller {
                 'catid'=> $catid
             );
             $response = $this->admin_model->process_category("delete",$catdata);
-            redirect("admin/categories");
+            //redirect("admin/categories");
         }
         
         $this->gen_contents['categories'] = $this->admin_model->get_categories();
@@ -95,34 +95,137 @@ class Welcome extends CI_Controller {
     }
     
     //manage product category 
-    public function packages($mode="list",$package_id=""){
+    public function packages($mode="list",$pack_id=""){
         $this->load->model('admin/admin_model');
+        $page = 'admin/packages';
         // Package add area
         if($mode == "add"){
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('catname', 'Package Name', 'required');
+            $page = 'admin/packages_add';
+            $this->form_validation->set_rules('description', 'Package Name', 'required');
             if($this->form_validation->run() == TRUE){
                 $packdata = array(
                     "description"       => $this->input->post("description",true),
-                    "credits_nr"        => $this->input->post("credits",true),
+                    "credits_nr"        => $this->input->post("credits_nr",true),
                     "price"             => $this->input->post("price",true),
                     "currency"          => $this->input->post("currency",true),
                     "currency_symbol"   => $this->input->post("currency_symbol",true)
                 );
                 $response = $this->admin_model->process_package("add",$packdata);
                 if($response == "added"){
+                    redirect("admin/packages");
                 }
                 else if($response == "exists"){
                     sf('error_message', 'Sorry! This package name already exists');
                 }
             }
-            $this->gen_contents['page_heading'] = 'Packages';
-            $this->template->set_template('admin');
-            $this->template->write_view('content', 'admin/packages_add', $this->gen_contents);
-            //redirect("admin/packages");
+            
         }
-        $this->gen_contents['packages'] = $this->admin_model->get_packages();
         
+        // Package edit area
+        if($mode == "edit"){
+            $packdata = $this->admin_model->get_packages('list',$pack_id);
+            //print_r($packdata); die();
+            $this->gen_contents['pd'] = $packdata;
+            $page = "admin/packages_add";
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('description', 'Package Name', 'required');
+            if($this->form_validation->run() == TRUE){
+                
+                $packdata_new = array(
+                    "packageID"         => $this->input->post("packageID",true),
+                    "description"       => $this->input->post("description",true),
+                    "credits_nr"        => $this->input->post("credits_nr",true),
+                    "price"             => $this->input->post("price",true),
+                    "currency"          => $this->input->post("currency",true),
+                    "currency_symbol"   => $this->input->post("currency_symbol",true)
+                );
+                //print_r($packdata_new); die();
+                $response = $this->admin_model->process_package("edit",$packdata_new);
+                if($response == "edited"){
+                    redirect("admin/packages");
+                }
+            }
+            
+        }
+        // Package delete area
+        if($mode == "delete" && !empty($pack_id)){
+            $packdata = array(
+                'packageID'=> $pack_id
+            );
+            $response = $this->admin_model->process_package("delete",$packdata);
+            redirect("admin/packages");
+        }
+        
+        $this->gen_contents['packages'] = $this->admin_model->get_packages();
+        $this->gen_contents['page_heading'] = 'Packages';
+        $this->template->set_template('admin');
+        $this->template->write_view('content', $page, $this->gen_contents);
+        $this->template->render();
+        
+    }
+    
+    //manage makers/brands
+    
+    public function makers($mode="list",$maker_id=""){
+        $this->load->model('admin/admin_model');
+        $page = 'admin/makers';
+        // makeres add area
+        if($mode == "add"){
+            $this->load->library('form_validation');
+            $page = 'admin/makers_add';
+            $this->form_validation->set_rules('maker', 'Maker name', 'required');
+            if($this->form_validation->run() == TRUE){
+                $makerdata = array(
+                    "maker"       => $this->input->post("maker",true),
+                    "cat_id"      => $this->input->post("cat_id",true)
+                );
+                $response = $this->admin_model->process_makers("add",$makerdata);
+                if($response == "added"){
+                    redirect("admin/makers");
+                }
+                else if($response == "exists"){
+                    sf('error_message', 'Sorry! This maker name already exists for same category');
+                }
+            }
+        }
+        
+        // makers edit area
+        if($mode == "edit"){
+            $makerdata = $this->admin_model->get_makers('list',$maker_id);
+            //print_r($packdata); die();
+            $this->gen_contents['md'] = $makerdata;
+            $page = "admin/makers_add";
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('maker', 'Maker name', 'required');
+            if($this->form_validation->run() == TRUE){
+                $makerdata_new = array(
+                    "makerID"     => $this->input->post("makerID",true),
+                    "maker"       => $this->input->post("maker",true),
+                    "cat_id"      => $this->input->post("cat_id",true)
+                );
+                //print_r($packdata_new); die();
+                $response = $this->admin_model->process_makers("edit",$makerdata_new);
+                if($response == "edited"){
+                    redirect("admin/makers");
+                }
+            }
+            
+        }
+        // makers delete area
+        if($mode == "delete" && !empty($maker_id)){
+            $makerdata = array(
+                'makerID'=> $maker_id
+            );
+            $response = $this->admin_model->process_makers("delete",$makerdata);
+            redirect("admin/makers");
+        }
+        
+        $this->gen_contents['makers'] = $this->admin_model->get_makers();
+        $this->gen_contents['cat_list'] = $this->admin_model->get_categories();
+        $this->gen_contents['page_heading'] = 'Makers/Brands';
+        $this->template->set_template('admin');
+        $this->template->write_view('content', $page, $this->gen_contents);
         $this->template->render();
         
     }

@@ -2,8 +2,11 @@
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-body">           
-                
-                <a href="#" class="btn btn-success pull-right">Add New Package</a>
+                <h4>
+                    Packages list
+                    <a href="<?php echo admin_url(); ?>packages/add" class="btn btn-success pull-right">Add New Package</a>
+                </h4>
+                <hr>
                 <div class="clearfix"></div>
                 <br>
                 <?php 

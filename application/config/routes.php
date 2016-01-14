@@ -52,15 +52,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-
+// admin common routing
 $route['admin']                             = "admin/user/index";
 $route['admin/login']                       = "admin/user/index";
 $route['admin/logout']                      = "admin/user/logout";
 $route['admin/dashboard']                   = "admin/welcome";
+// admin category routing
 $route['admin/categories']                  = "admin/welcome/categories";
 $route['admin/categories/(:any)']           = "admin/welcome/categories/$1";
 $route['admin/categories/(:any)/(:any)']    = "admin/welcome/categories/$1/$2";
+// admin package routing
 $route['admin/packages']                    = "admin/welcome/packages";
 $route['admin/packages/(:any)']             = "admin/welcome/packages/$1";
 $route['admin/packages/(:any)/(:any)']      = "admin/welcome/packages/$1/$2";
+// admin makers/brand routing
+$route['admin/makers']                      = "admin/welcome/makers";
+$route['admin/makers/(:any)']               = "admin/welcome/makers/$1";
+$route['admin/makers/(:any)/(:any)']        = "admin/welcome/makers/$1/$2";
 

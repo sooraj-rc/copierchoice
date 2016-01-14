@@ -2,15 +2,32 @@
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-body">           
-
-                
+                <?php
+                    if (!empty($pd)) {
+                        $title = "Edit package";
+                    }
+                    else{
+                        $title = "Add new package";
+                    }
+                ?>
+                <h4>
+                    <a href="<?php echo admin_url(); ?>packages" class="">Package list</a> <i class="fa fa-angle-right"></i>
+                    <?php echo $title; ?>
+                </h4>
+                <hr>
                 <div class="col-md-6">
+                <?php
+                    $error = f('error_message') ? f('error_message') : validation_errors();
+                    if(!empty($error)){
+                        echo '<div class="red-font">'.$error.'</div>';
+                    }
+                ?>
                 <?php
                     $pack_form = array(
                         "class" => "",
                     );
-                    if (!empty($packdata)) {
-                        echo form_open(admin_url() . "packages/edit", $pack_form);
+                    if (!empty($pd)) {
+                        echo form_open(admin_url() . "packages/edit/".$this->uri->segment(4), $pack_form);
                     } else {
                         echo form_open(admin_url() . "packages/add", $pack_form);
                     }
@@ -25,7 +42,8 @@
                                         "name"          => "description",
                                         "class"         => "form-control",
                                         "placeholder"   => "Package Name",
-                                        "id"            => "packagename"
+                                        "id"            => "packagename",
+                                        "value"         => set_value('description',$pd[0]['description'])
                                     );
                                     echo form_input($pn);
                                 ?>
@@ -36,10 +54,11 @@
                             <div class="input-icon right">
                                 <?php
                                     $pc = array(
-                                        "name"  => "credits_nr",
-                                        "class" => "form-control",
-                                        "placeholder" => "Package Credits",
-                                        "id"    => "packagecredit"
+                                        "name"          => "credits_nr",
+                                        "class"         => "form-control",
+                                        "placeholder"   => "Package Credits",
+                                        "id"            => "packagecredit",
+                                        "value"         => set_value('credits_nr',$pd[0]['credits_nr'])
                                     );
                                     echo form_input($pc);
                                 ?>
@@ -50,10 +69,11 @@
                             <div class="input-icon right">
                                 <?php
                                     $pcp = array(
-                                        "name"  => "price",
-                                        "class" => "form-control",
-                                        "placeholder" => "Package Credits Price",
-                                        "id"    => "price"
+                                        "name"          => "price",
+                                        "class"         => "form-control",
+                                        "placeholder"   => "Package Credits Price",
+                                        "id"            => "price",
+                                        "value"         => set_value('price',$pd[0]['price'])
                                     );
                                     echo form_input($pcp);
                                 ?>
@@ -66,10 +86,11 @@
                                     <div class="input-icon right">
                                         <?php
                                             $pcc = array(
-                                                "name"  => "currency",
-                                                "class" => "form-control",
-                                                "placeholder" => "Package Currency",
-                                                "id"    => "currency"
+                                                "name"          => "currency",
+                                                "class"         => "form-control",
+                                                "placeholder"   => "Package Currency",
+                                                "id"            => "currency",
+                                                "value"         => set_value('currency',$pd[0]['currency'])
                                             );
                                             echo form_input($pcc);
                                         ?>
@@ -82,10 +103,11 @@
                                     <div class="input-icon right">
                                         <?php
                                             $pcs = array(
-                                                "name"  => "currency_symbol",
-                                                "class" => "form-control",
-                                                "placeholder" => "Package Currency Symbol",
-                                                "id"    => "csymbol"
+                                                "name"          => "currency_symbol",
+                                                "class"         => "form-control",
+                                                "placeholder"   => "Package Currency Symbol",
+                                                "id"            => "csymbol",
+                                                "value"         => set_value('currency_symbol',$pd[0]['currency_symbol'])
                                             );
                                             echo form_input($pcs);
                                         ?>
@@ -97,7 +119,7 @@
                     </div>
                     <div class="form-actions text-right pal">
                         <?php
-                            if(!empty($packdata)){
+                            if(!empty($pd)){
                                 $btn_value = "Edit Package";
                             }
                             else {
@@ -107,7 +129,7 @@
                                 "class" => "btn btn-primary",
                                 "value" => $btn_value
                             );
-                            if(!empty($packdata)) {  echo form_hidden ("packageID",$packdata["packageID"]);  }
+                            if(!empty($pd)) {  echo form_hidden ("packageID",$pd[0]["packageID"]);  }
                             echo form_submit($submit);
                         ?>
                     </div>

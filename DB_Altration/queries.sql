@@ -29,4 +29,11 @@ CREATE TABLE IF NOT EXISTS `product_categories` (
   PRIMARY KEY (`cat_d`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-ALTER TABLE `packages` ADD `status` CHAR( 1 ) NOT NULL DEFAULT 'A' COMMENT 'A-Active|D-Deleted' AFTER `currency_symbol` 
+ALTER TABLE `packages` ADD `status` CHAR( 1 ) NOT NULL DEFAULT 'A' COMMENT 'A-Active|D-Deleted' AFTER `currency_symbol`;
+
+--14/01/2016
+ALTER TABLE `makers` ADD `cat_id` INT NOT NULL AFTER `makerID`;
+
+UPDATE `makers` SET cat_id = 1 WHERE cat_id = 0;
+
+ALTER TABLE `makers` ADD `status` CHAR( 1 ) NOT NULL DEFAULT 'A' COMMENT 'A-Active|D-Deleted' AFTER `maker`;

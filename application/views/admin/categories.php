@@ -1,11 +1,12 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel">
-            <div class="panel-body">           
+            <div class="panel-body"> 
+                <h4>Manage product categories</h4><hr>
                 <?php
                     $error = f('error_message') ? f('error_message') : validation_errors();
                     if(!empty($error)){
-                        echo '<div class="alert alert-warning">'.$error.'</div>';
+                        echo '<div class="red-font">'.$error.'</div>';
                     }
                 ?>
                 

@@ -49,13 +49,10 @@ class Admin_model extends CI_Model {
             $this->db->from("product_categories");
             $this->db->where("cat_name",$catname);
             $query = $this->db->get();
-            if($query->num_rows() == 0){
+            if($query->num_rows() == 1){
                 $this->db->where("cat_id",$catid);
                 $this->db->update("product_categories",$cdata);
                 return "edited";
-            }
-            else {
-                return "exists";
             }
         }
         if($mode == "delete"){
@@ -79,10 +76,21 @@ class Admin_model extends CI_Model {
     }
     
     // function to get packages
-    public function get_packages($type = "list") {
+    public function get_packages($type = "list", $pack_id="") {
         $this->db->select("*");
         $this->db->from('packages');
-        $this->db->where(array('status' => 'A'));
+        if(!empty($pack_id)){
+            $where = array(
+                'status'    => 'A',
+                'packageID' => $pack_id
+            );
+        }
+        else{
+            $where = array(
+                'status'    => 'A'
+            );
+        }
+        $this->db->where($where);
         $this->db->order_by("description");
         $query = $this->db->get();
         if($type == 'list'){
@@ -91,6 +99,8 @@ class Admin_model extends CI_Model {
             return $query->num_rows();
         }
     }
+    
+    
     // function to add/edit/delete packages
     public function process_package($mode, $packdata){
         $pack_name  = $packdata['description'];
@@ -109,18 +119,9 @@ class Admin_model extends CI_Model {
             }
         }
         if($mode == "edit"){
-            $this->db->select("*");
-            $this->db->from("product_categories");
-            $this->db->where("description",$packdata);
-            $query = $this->db->get();
-            if($query->num_rows() == 0){
-                $this->db->where("packageID",$pack_id);
-                $this->db->update("packages",$packdata);
-                return "edited";
-            }
-            else {
-                return "exists";
-            }
+            $this->db->where("packageID",$pack_id);
+            $this->db->update("packages",$packdata);
+            return "edited";
         }
         if($mode == "delete"){
             $pdata_del = array(
@@ -128,6 +129,69 @@ class Admin_model extends CI_Model {
             );
             $this->db->where("packageID",$pack_id);
             $this->db->update("packages",$pdata_del);
+            return "deleted";
+        }
+    }
+    
+    // function to get makers
+    public function get_makers($type = "list", $maker_id="") {
+        $this->db->select("*");
+        $this->db->from('makers m');
+        $this->db->join("product_categories pc", "pc.cat_id = m.cat_id", "left");
+        if(!empty($maker_id)){
+            $where = array(
+                'm.status'    => 'A',
+                'm.makerID' => $maker_id
+            );
+        }
+        else{
+            $where = array(
+                'm.status'    => 'A'
+            );
+        }
+        $this->db->where($where);
+        $this->db->order_by("m.maker");
+        $query = $this->db->get();
+        if($type == 'list'){
+            return $query->result_array();
+        } else {
+            return $query->num_rows();
+        }
+    }
+    
+    // function to add/edit/delete makers
+    public function process_makers($mode, $makerdata){
+        $maker      = $makerdata['maker'];
+        $maker_id   = $makerdata['makerID'];
+        $cat_id     = $makerdata['cat_id'];
+        if($mode == "add"){
+            $where = array(
+                'maker'     => $maker,
+                'cat_id'    => $cat_id
+            );
+            $this->db->select("*");
+            $this->db->from("makers");
+            $this->db->where($where);
+            $query = $this->db->get();
+            if($query->num_rows() == 0){
+                $this->db->insert("makers",$makerdata);
+                return "added";
+            }
+            else {
+                return "exists";
+            }
+        }
+        if($mode == "edit"){
+            $this->db->where("makerID",$maker_id);
+            $this->db->update("makers",$makerdata);
+            return "edited";
+        }
+        if($mode == "delete"){
+            $mdata_del = array(
+                "status"    => "D"
+            );
+            $this->db->where("makerID",$maker_id);
+            $this->db->update("makers",$mdata_del);
             return "deleted";
         }
     }
