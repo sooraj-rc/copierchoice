@@ -57,3 +57,10 @@ $route['admin']                             = "admin/user/index";
 $route['admin/login']                       = "admin/user/index";
 $route['admin/logout']                      = "admin/user/logout";
 $route['admin/dashboard']                   = "admin/welcome";
+$route['admin/categories']                  = "admin/welcome/categories";
+$route['admin/categories/(:any)']           = "admin/welcome/categories/$1";
+$route['admin/categories/(:any)/(:any)']    = "admin/welcome/categories/$1/$2";
+$route['admin/packages']                    = "admin/welcome/packages";
+$route['admin/packages/(:any)']             = "admin/welcome/packages/$1";
+$route['admin/packages/(:any)/(:any)']      = "admin/welcome/packages/$1/$2";
+
