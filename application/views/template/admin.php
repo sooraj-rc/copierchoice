@@ -103,7 +103,7 @@
 
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo admin_url(); ?>users">
                                     <i class="fa fa-users fa-fw"><div class="icon-bg bg-red"></div></i>
                                     <span class="menu-title">Manage Users</span>
                                 </a>

@@ -70,3 +70,6 @@ $route['admin/makers']                      = "admin/welcome/makers";
 $route['admin/makers/(:any)']               = "admin/welcome/makers/$1";
 $route['admin/makers/(:any)/(:any)']        = "admin/welcome/makers/$1/$2";
 
+$route['admin/users']                       = "admin/welcome/users";
+$route['admin/users/(:num)']                = "admin/welcome/users/$1";
+

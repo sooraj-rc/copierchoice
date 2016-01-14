@@ -196,4 +196,27 @@ class Admin_model extends CI_Model {
         }
     }
     
+    //function to get users(sellers)
+    public function get_users($limit, $start){
+        $this->db->select("*");
+        $this->db->from('users');
+        $where = array(
+            'status'    => 'Active'
+        );
+        $this->db->where($where);
+        $this->db->order_by("contact_name");
+        $this->db->limit($limit, $start);
+        $query = $this->db->get();
+        if($query->num_rows() > 0){
+            return $query->result_array();
+        } else {
+            return FALSE;
+        }
+    }
+    
+    function get_users_count(){
+        $count = $this->db->count_all("users");
+        return $count;
+    }
+    
 }

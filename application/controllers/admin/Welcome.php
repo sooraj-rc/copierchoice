@@ -166,7 +166,6 @@ class Welcome extends CI_Controller {
     }
     
     //manage makers/brands
-    
     public function makers($mode="list",$maker_id=""){
         $this->load->model('admin/admin_model');
         $page = 'admin/makers';
@@ -228,6 +227,46 @@ class Welcome extends CI_Controller {
         $this->template->write_view('content', $page, $this->gen_contents);
         $this->template->render();
         
+    }
+    
+    public function users($mode = 'list'){
+        $this->load->model('admin/admin_model');
+        $page = 'admin/users';
+        $total_user = $this->admin_model->get_users_count();
+        //--pagination
+        $this->load->library('pagination');
+        $config['base_url']     = admin_url().'users';
+        $config['total_rows']   = $total_user;
+        $config['per_page']     = 20;
+        //config for bootstrap pagination class integration
+        $config['full_tag_open'] = '<ul class="pagination pagination-sm pull-right">';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_link'] = false;
+        $config['last_link'] = false;
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        
+        $this->pagination->initialize($config);
+        $this->gen_contents['links'] =  $this->pagination->create_links();
+        $page1 = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        
+        $this->gen_contents['users'] = $this->admin_model->get_users($config['per_page'], $page1);
+        $this->gen_contents['page_heading'] = 'Users(Sellers)';
+        $this->template->set_template('admin');
+        $this->template->write_view('content', $page, $this->gen_contents);
+        $this->template->render();
     }
 
 }
