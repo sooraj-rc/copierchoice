@@ -73,7 +73,7 @@
                         <ul id="side-menu" class="nav">
 
                             <div class="clearfix"></div>
-                            <li class="active"><a href="<?php echo assets_url(); ?>dashboard"><i class="fa fa-tachometer fa-fw">
+                            <li class="active"><a href="<?php echo admin_url(); ?>dashboard"><i class="fa fa-tachometer fa-fw">
                                         <div class="icon-bg bg-orange"></div>
                                     </i><span class="menu-title">Dashboard</span></a></li>
                             <li><a href="#"><i class="fa fa-desktop fa-fw">
@@ -82,33 +82,33 @@
 
                             </li>
                             <li>
-                                <a href="<?php echo assets_url(); ?>categories">
+                                <a href="<?php echo admin_url(); ?>categories">
                                     <i class="fa fa-sitemap fa-fw"><div class="icon-bg bg-dark"></div></i>
                                     <span class="menu-title">Manage categories</span>
                                 </a>
 
                             </li>
                             <li>
-                                <a href="<?php echo assets_url(); ?>makers">
+                                <a href="<?php echo admin_url(); ?>makers">
                                     <i class="fa fa-slack fa-fw"><div class="icon-bg bg-green"></div></i>
                                     <span class="menu-title">Manage Makers/Brands</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo assets_url(); ?>packages">
+                                <a href="<?php echo admin_url(); ?>packages">
                                     <i class="fa fa-gift fa-fw"><div class="icon-bg bg-violet"></div></i>
                                     <span class="menu-title">Manage Packages</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo admin_url(); ?>leads">
                                     <i class="fa fa-th-list fa-fw"><div class="icon-bg bg-blue"></div></i>
                                     <span class="menu-title">Manage Leads</span>
                                 </a>
 
                             </li>
                             <li>
-                                <a href="<?php echo assets_url(); ?>users">
+                                <a href="<?php echo admin_url(); ?>users">
                                     <i class="fa fa-users fa-fw"><div class="icon-bg bg-red"></div></i>
                                     <span class="menu-title">Manage Users</span>
                                 </a>

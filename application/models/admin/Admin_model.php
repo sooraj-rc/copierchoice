@@ -253,7 +253,7 @@ class Admin_model extends CI_Model {
             $datetime = timestamp_to_datetime($timestamp, 'Y-m-d H:i:s');
             $qry = 'UPDATE leads SET submit_date = DATE_ADD("'.$datetime.'",INTERVAL 330 MINUTE) WHERE ID = '.$row->ID; 
             $this->db->query($qry);
-            echo '<br>'.$qry;
+            //echo '<br>'.$qry;
         }
     }
     
