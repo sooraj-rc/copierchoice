@@ -73,3 +73,8 @@ $route['admin/makers/(:any)/(:any)']        = "admin/welcome/makers/$1/$2";
 $route['admin/users']                       = "admin/welcome/users";
 $route['admin/users/(:num)']                = "admin/welcome/users/$1";
 
+$route['admin/leads']                       = "admin/welcome/leads";
+$route['admin/leads/(:num)']                = "admin/welcome/leads/$1";
+
+$route['admin/viewmore/(:any)/(:any)']      = "admin/ajax/viewmore/$1/$2";
+

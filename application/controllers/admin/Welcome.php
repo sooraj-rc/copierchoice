@@ -229,44 +229,62 @@ class Welcome extends CI_Controller {
         
     }
     
+    //users list controller
     public function users($mode = 'list'){
         $this->load->model('admin/admin_model');
         $page = 'admin/users';
         $total_user = $this->admin_model->get_users_count();
         //--pagination
         $this->load->library('pagination');
+        $this->load->library('bspagination');   //bootstrap pagination styles
         $config['base_url']     = admin_url().'users';
         $config['total_rows']   = $total_user;
-        $config['per_page']     = 20;
+        $config['per_page']     = 25;
         //config for bootstrap pagination class integration
-        $config['full_tag_open'] = '<ul class="pagination pagination-sm pull-right">';
-        $config['full_tag_close'] = '</ul>';
-        $config['first_link'] = false;
-        $config['last_link'] = false;
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="prev">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
+        
+        $bs_init = $this->bspagination->config();
+        $config = array_merge($config, $bs_init);
         
         $this->pagination->initialize($config);
         $this->gen_contents['links'] =  $this->pagination->create_links();
-        $page1 = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $pagin = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         
-        $this->gen_contents['users'] = $this->admin_model->get_users($config['per_page'], $page1);
-        $this->gen_contents['page_heading'] = 'Users(Sellers)';
+        $this->gen_contents['users'] = $this->admin_model->get_users($config['per_page'], $pagin);
+        $this->gen_contents['page_heading'] = 'Users (Sellers)';
         $this->template->set_template('admin');
         $this->template->write_view('content', $page, $this->gen_contents);
         $this->template->render();
     }
+    
+    //Leads list controller
+    public function leads($mode = 'list'){
+        $this->load->model('admin/admin_model');
+        $page = 'admin/leads';
+        $total_leads = $this->admin_model->get_leads_count();
+        //--pagination
+        $this->load->library('pagination');
+        $this->load->library('bspagination');   //bootstrap pagination styles
+        $config['base_url']     = admin_url().'leads';
+        $config['total_rows']   = $total_leads;
+        $config['per_page']     = 25;
+        //config for bootstrap pagination class integration
+        
+        $bs_init = $this->bspagination->config();
+        $config = array_merge($config, $bs_init);
+        
+        $this->pagination->initialize($config);
+        $this->gen_contents['links'] =  $this->pagination->create_links();
+        $pagin = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        
+        //$this->admin_model->update_submit_date(); //-- updating exact datetime format to submit_date from SubmissionDate in leads table
+        //die();
+        
+        $this->gen_contents['leads'] = $this->admin_model->get_leads($config['per_page'], $pagin);
+        $this->gen_contents['page_heading'] = 'Leads';
+        $this->template->set_template('admin');
+        $this->template->write_view('content', $page, $this->gen_contents);
+        $this->template->render();
+    }
+    
 
 }

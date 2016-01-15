@@ -12,16 +12,21 @@
         <!--Loading bootstrap css-->
         <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
         <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/jquery-ui-1.10.4.custom.min.css">
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/font-awesome.min.css">
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/bootstrap.min.css">
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/animate.css">
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/all.css">
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/main.css">
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/style-responsive.css">
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/zabuto_calendar.min.css">
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/pace.css">
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/styles/jquery.news-ticker.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo assets_url(); ?>styles/jquery-ui-1.10.4.custom.min.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo assets_url(); ?>styles/font-awesome.min.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo assets_url(); ?>styles/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo assets_url(); ?>styles/animate.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo assets_url(); ?>styles/all.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo assets_url(); ?>styles/main.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo assets_url(); ?>styles/style-responsive.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo assets_url(); ?>styles/zabuto_calendar.min.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo assets_url(); ?>styles/pace.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo assets_url(); ?>styles/jquery.news-ticker.css">
+        <script type="text/javascript">
+            var base_url    = "<?php echo base_url(); ?>";
+            var admin_url   = "<?php echo admin_url(); ?>";
+            var assets_url  = "<?php echo assets_url(); ?>";
+        </script>
     </head>
     <body>
 
@@ -51,7 +56,7 @@
                                 <ul class="dropdown-menu dropdown-user pull-right">
                                     <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="<?php echo admin_url(); ?>logout"><i class="fa fa-key"></i>Log Out</a></li>
+                                    <li><a href="<?php echo assets_url(); ?>logout"><i class="fa fa-key"></i>Log Out</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -68,7 +73,7 @@
                         <ul id="side-menu" class="nav">
 
                             <div class="clearfix"></div>
-                            <li class="active"><a href="<?php echo admin_url(); ?>dashboard"><i class="fa fa-tachometer fa-fw">
+                            <li class="active"><a href="<?php echo assets_url(); ?>dashboard"><i class="fa fa-tachometer fa-fw">
                                         <div class="icon-bg bg-orange"></div>
                                     </i><span class="menu-title">Dashboard</span></a></li>
                             <li><a href="#"><i class="fa fa-desktop fa-fw">
@@ -77,20 +82,20 @@
 
                             </li>
                             <li>
-                                <a href="<?php echo admin_url(); ?>categories">
+                                <a href="<?php echo assets_url(); ?>categories">
                                     <i class="fa fa-sitemap fa-fw"><div class="icon-bg bg-dark"></div></i>
                                     <span class="menu-title">Manage categories</span>
                                 </a>
 
                             </li>
                             <li>
-                                <a href="<?php echo admin_url(); ?>makers">
+                                <a href="<?php echo assets_url(); ?>makers">
                                     <i class="fa fa-slack fa-fw"><div class="icon-bg bg-green"></div></i>
                                     <span class="menu-title">Manage Makers/Brands</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo admin_url(); ?>packages">
+                                <a href="<?php echo assets_url(); ?>packages">
                                     <i class="fa fa-gift fa-fw"><div class="icon-bg bg-violet"></div></i>
                                     <span class="menu-title">Manage Packages</span>
                                 </a>
@@ -103,7 +108,7 @@
 
                             </li>
                             <li>
-                                <a href="<?php echo admin_url(); ?>users">
+                                <a href="<?php echo assets_url(); ?>users">
                                     <i class="fa fa-users fa-fw"><div class="icon-bg bg-red"></div></i>
                                     <span class="menu-title">Manage Users</span>
                                 </a>
@@ -165,43 +170,66 @@
 
         </div>
 
-        <script src="<?php echo base_url(); ?>assets/script/jquery-1.10.2.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery-migrate-1.2.1.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery-ui.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/bootstrap.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/bootstrap-hover-dropdown.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/html5shiv.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/respond.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.metisMenu.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.slimscroll.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.cookie.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/icheck.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/custom.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.news-ticker.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.menu.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/pace.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/holder.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/responsive-tabs.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.flot.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.flot.categories.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.flot.pie.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.flot.tooltip.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.flot.resize.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.flot.fillbetween.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.flot.stack.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/jquery.flot.spline.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/zabuto_calendar.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/index.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery-1.10.2.min.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery-migrate-1.2.1.min.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery-ui.js"></script>
+        <script src="<?php echo assets_url(); ?>script/bootstrap.min.js"></script>
+        <script src="<?php echo assets_url(); ?>script/bootstrap-hover-dropdown.js"></script>
+        <script src="<?php echo assets_url(); ?>script/html5shiv.js"></script>
+        <script src="<?php echo assets_url(); ?>script/respond.min.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.metisMenu.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.slimscroll.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.cookie.js"></script>
+        <script src="<?php echo assets_url(); ?>script/icheck.min.js"></script>
+        <script src="<?php echo assets_url(); ?>script/custom.min.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.news-ticker.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.menu.js"></script>
+        <script src="<?php echo assets_url(); ?>script/pace.min.js"></script>
+        <script src="<?php echo assets_url(); ?>script/holder.js"></script>
+        <script src="<?php echo assets_url(); ?>script/responsive-tabs.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.flot.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.flot.categories.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.flot.pie.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.flot.tooltip.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.flot.resize.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.flot.fillbetween.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.flot.stack.js"></script>
+        <script src="<?php echo assets_url(); ?>script/jquery.flot.spline.js"></script>
+        <script src="<?php echo assets_url(); ?>script/zabuto_calendar.min.js"></script>
+        <script src="<?php echo assets_url(); ?>script/index.js"></script>
         <!--LOADING SCRIPTS FOR CHARTS-->
-        <script src="<?php echo base_url(); ?>assets/script/highcharts.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/data.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/drilldown.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/exporting.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/highcharts-more.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/charts-highchart-pie.js"></script>
-        <script src="<?php echo base_url(); ?>assets/script/charts-highchart-more.js"></script>
+        <script src="<?php echo assets_url(); ?>script/highcharts.js"></script>
+        <script src="<?php echo assets_url(); ?>script/data.js"></script>
+        <script src="<?php echo assets_url(); ?>script/drilldown.js"></script>
+        <script src="<?php echo assets_url(); ?>script/exporting.js"></script>
+        <script src="<?php echo assets_url(); ?>script/highcharts-more.js"></script>
+        <script src="<?php echo assets_url(); ?>script/charts-highchart-pie.js"></script>
+        <script src="<?php echo assets_url(); ?>script/charts-highchart-more.js"></script>
         <!--CORE JAVASCRIPT-->
-        <script src="<?php echo base_url(); ?>assets/script/main.js"></script>
-
+        <script src="<?php echo assets_url(); ?>script/main.js"></script>
+        <!--ADMIN JAVASCRIPT-->
+        <script src="<?php echo assets_url(); ?>script/admin.js"></script>
+        
     </body>
 </html>
+
+
+<!-- View more common model -->
+<div id="viewMore" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">
+                    &times;</button>
+                <h4 class="modal-title" id="modal-title"> </h4>
+            </div>
+            <div class="modal-body" id="data-output">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- View more common model -->

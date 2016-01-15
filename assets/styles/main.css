@@ -121,7 +121,7 @@ hr {
 #wrapper {
     width: 100%;
     min-height: 100%;
-    background-color: #3C3C3C;
+    background-color: #1e1e1e;
 }
 #page-wrapper {
     min-height: 100%;
@@ -808,7 +808,7 @@ hr {
     padding-top: 50px !important;
 }
 #sidebar {
-    background: #3C3C3C;
+    background: #1e1e1e;
 }
 .navbar-static-side {
     transition: 0.3s all linear;
@@ -821,7 +821,7 @@ hr {
 }
 .navbar-static-side ul li
 {
-    background: #3C3C3C; /* Old browsers */
+    background: #1e1e1e; /* Old browsers: #3C3C3C; */
     outline: none;
     color:#d9d9d9;
 

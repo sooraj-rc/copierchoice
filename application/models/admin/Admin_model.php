@@ -214,9 +214,63 @@ class Admin_model extends CI_Model {
         }
     }
     
-    function get_users_count(){
+    //function to get total user counts
+    public function get_users_count(){
         $count = $this->db->count_all("users");
         return $count;
     }
     
+    //function to get leads list
+    public function get_leads($limit, $start){
+        $this->db->select("*,  DATE_FORMAT(submit_date, '%W %D %M %Y, %h:%i %p') sdate");
+        $this->db->from('leads');
+        $where = array(
+            
+        );
+        $this->db->where($where);
+        $this->db->order_by("submit_date DESC");
+        $this->db->limit($limit, $start);
+        $query = $this->db->get();
+        if($query->num_rows() > 0){
+            return $query->result_array();
+        } else {
+            return FALSE;
+        }
+    }
+    
+    //funtion to get leads count
+    public function get_leads_count(){
+        $count = $this->db->count_all("leads");
+        return $count;
+    }
+    
+    //function to update timestamp to date time in new field (submit_date) - 
+    //to avoide mismatching of date time format of Submission_Date - varchar(255)
+    function update_submit_date(){
+        $query = $this->db->query("SELECT Submission_Date, Timestamp, ID FROM leads WHERE 1");
+        foreach ($query->result() as $row){
+            $timestamp = $row->Timestamp;
+            $datetime = timestamp_to_datetime($timestamp, 'Y-m-d H:i:s');
+            $qry = 'UPDATE leads SET submit_date = DATE_ADD("'.$datetime.'",INTERVAL 330 MINUTE) WHERE ID = '.$row->ID; 
+            $this->db->query($qry);
+            echo '<br>'.$qry;
+        }
+    }
+    
+    function get_leads_details($lead_id){
+        $this->db->select("*,  DATE_FORMAT(submit_date, '%W %D %M %Y, %h:%i %p') sdate");
+        $this->db->from('leads');
+        $where = array(
+            'ID' => $lead_id
+        );
+        $this->db->where($where);
+        $query = $this->db->get();
+        if($query->num_rows() > 0){
+            return $query->result_array();
+        } else {
+            return FALSE;
+        }
+    }
+    
+
 }
