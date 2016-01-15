@@ -41,5 +41,3 @@ ALTER TABLE `makers` ADD `status` CHAR( 1 ) NOT NULL DEFAULT 'A' COMMENT 'A-Acti
 --  Till updated in demo DB -- 15/01/2016
 
 -- 15/01/2016
-
-ALTER TABLE `leads` CHANGE `Submission_Date` `Submission_Date` DATETIME NULL DEFAULT NULL ;
