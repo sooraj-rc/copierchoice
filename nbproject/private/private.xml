@@ -3,7 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/sooraj/public_html/copierchoice/assets/styles/main.css</file>
+            <file>file:/home/sooraj/public_html/copierchoice/application/helpers/common_helper.php</file>
+            <file>file:/home/sooraj/public_html/copierchoice/DB_Altration/queries.sql</file>
             <file>file:/home/sooraj/public_html/copierchoice/application/config/routes.php</file>
             <file>file:/home/sooraj/public_html/copierchoice/application/models/admin/Admin_model.php</file>
             <file>file:/home/sooraj/public_html/copierchoice/application/views/template/admin.php</file>

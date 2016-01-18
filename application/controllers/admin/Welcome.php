@@ -270,6 +270,7 @@ class Welcome extends CI_Controller {
         //config for bootstrap pagination class integration
         
         $bs_init = $this->bspagination->config();
+        
         $config = array_merge($config, $bs_init);
         
         $this->pagination->initialize($config);
