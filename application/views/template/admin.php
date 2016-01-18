@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>CopierChoice|Admin</title>
+        <title>CopierChoice|Admin-Panel</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,7 +56,7 @@
                                 <ul class="dropdown-menu dropdown-user pull-right">
                                     <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="<?php echo assets_url(); ?>logout"><i class="fa fa-key"></i>Log Out</a></li>
+                                    <li><a href="<?php echo admin_url(); ?>logout"><i class="fa fa-key"></i>Log Out</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -67,26 +67,32 @@
             <!--END TOPBAR-->
             <div id="wrapper">
                 <!--BEGIN SIDEBAR MENU-->
-                <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
+                <nav id="sidebar" role="navigation" data-step="2" data-intro=""
                      data-position="right" class="navbar-default navbar-static-side">
                     <div class="sidebar-collapse menu-scroll">
                         <ul id="side-menu" class="nav">
-
                             <div class="clearfix"></div>
-                            <li class="active"><a href="<?php echo admin_url(); ?>dashboard"><i class="fa fa-tachometer fa-fw">
-                                        <div class="icon-bg bg-orange"></div>
-                                    </i><span class="menu-title">Dashboard</span></a></li>
-                            <li><a href="#"><i class="fa fa-desktop fa-fw">
-                                        <div class="icon-bg bg-pink"></div>
-                                    </i><span class="menu-title">Manage Contents</span></a>
-
+                            <li class="active">
+                                <a href="<?php echo admin_url(); ?>dashboard">
+                                    <i class="fa fa-tachometer fa-fw"><div class="icon-bg bg-orange"></div></i>
+                                    <span class="menu-title">Dashboard</span>
+                                </a>
+                            </li>                                                       
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-desktop fa-fw"><div class="icon-bg bg-pink"></div></i>
+                                    <span class="menu-title">Manage Contents</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="merchant_list.php">About Us</a></li>
+	                            <li><a href="merchant_approve.php">Contact Us</a></li>
+                                </ul> 
                             </li>
                             <li>
                                 <a href="<?php echo admin_url(); ?>categories">
                                     <i class="fa fa-sitemap fa-fw"><div class="icon-bg bg-dark"></div></i>
                                     <span class="menu-title">Manage categories</span>
                                 </a>
-
                             </li>
                             <li>
                                 <a href="<?php echo admin_url(); ?>makers">
@@ -207,21 +213,19 @@
         <script src="<?php echo assets_url(); ?>script/charts-highchart-more.js"></script>
         <!--CORE JAVASCRIPT-->
         <script src="<?php echo assets_url(); ?>script/main.js"></script>
-        <!--ADMIN JAVASCRIPT-->
-        <script src="<?php echo assets_url(); ?>script/admin.js"></script>
+        
         
     </body>
 </html>
 
-
 <!-- View more common model -->
-<div id="viewMore" class="modal fade">
+<div id="moreDetails" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" data-dismiss="modal" aria-hidden="true" class="close">
                     &times;</button>
-                <h4 class="modal-title" id="modal-title"> </h4>
+                <h4 class="modal-title" id="data-title"> </h4>
             </div>
             <div class="modal-body" id="data-output">
                 
@@ -233,3 +237,5 @@
     </div>
 </div>
 <!-- View more common model -->
+<!--ADMIN JAVASCRIPT-->
+<script src="<?php echo assets_url(); ?>script/admin.js"></script>

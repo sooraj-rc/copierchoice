@@ -78,3 +78,5 @@ $route['admin/leads/(:num)']                = "admin/welcome/leads/$1";
 
 $route['admin/viewmore/(:any)/(:any)']      = "admin/ajax/viewmore/$1/$2";
 
+$route['mf']    = "welcome/mf";
+

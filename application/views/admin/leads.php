@@ -33,7 +33,7 @@
                                     <td><?php echo $lead['First_Name'] . ' ' . $lead['Last_Name']; ?></td>
                                     <td><?php echo $lead['Email']; ?></td>
                                     <td><?php echo $lead['Business_Phone']; ?></td>
-                                    <td><a href="#" class="label label-info" data-toggle="modal" data-target="#viewMore">View more</a></td>
+                                    <td><a href="#" class="label label-info more" data-from="leads" data-id="<?php echo $lead['ID']; ?>">View more</a></td>
                                 </tr>
                                 <?php
                             }

@@ -12,11 +12,11 @@ class Ajax extends CI_Controller {
     public function viewmore($from = "", $data_id = ""){
         switch ($from) {
             case "leads":
-                
+                //echo "here"; die();
                 $this->load->model('admin/admin_model');
-                $this->gen_contents['from'] = "leads";
-                $this->gen_contents['leads_details'] = $this->admin_model->get_leads_details($data_id);
-                $this->template->write_view('content', "", $this->gen_contents);
+                $data['from']   = "leads";
+                $data['ld']     = $this->admin_model->get_leads_details($data_id);  // get lead details
+                $this->load->view("admin/ajax_data",$data);
                 break;
 
             default:
