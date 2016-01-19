@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'web';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 // admin common routing
@@ -78,5 +78,7 @@ $route['admin/leads/(:num)']                = "admin/welcome/leads/$1";
 
 $route['admin/viewmore/(:any)/(:any)']      = "admin/ajax/viewmore/$1/$2";
 
-$route['mf']    = "welcome/mf";
+//front end routing
+$route['getquote']                          = "web/getquote";
+$route['getquote/(:num)']                   = "web/getquote/$1";
 
