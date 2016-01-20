@@ -13,12 +13,15 @@
             </div>-->
             <div class="box row-fluid" style="font-size: 18px;">	
                 <br>
+                <div id="error"></div>
                 <div class="form-group">
+                    
                     <label for="name">1. What type of quote are you after?</label>
                     <div class="col-sm-10">
-                        <input type="radio" class="next1" name="qtype1" value="1"> Printer or Multifunction Device<br>
-                        <input type="radio" class="next1" name="qtype1" value="2"> Service &/or repair<br>
-                        <input type="radio" class="next1" name="qtype1" value="3"> Managed Print Service
+                        <input type="radio" class="next1" name="qtype1" value="1" required=""> Printer or Multifunction Device<br>
+                        <input type="radio" class="next1" name="qtype1" value="2" required=""> Service &/or repair<br>
+                        <input type="radio" class="next1" name="qtype1" value="3" required=""> Managed Print Service
+                        <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="form-group" id="2ndqn"><!-- show if qtype1 is 1  -->
@@ -53,7 +56,7 @@
                     <div class="col-sm-12">
                         <div align="center">
                             <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
-                            <button id="continue" type="button" class="btn-fresh text-capitalize submit btn">CONTINUE >></button>
+                            <button id="continue" type="submit" class="btn-fresh text-capitalize submit btn">CONTINUE >></button>
                         </div>
                     </div>
                 </div>			
