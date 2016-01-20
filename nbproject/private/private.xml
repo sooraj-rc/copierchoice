@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/sooraj/public_html/copierchoice/application/config/template.php</file>
-            <file>file:/home/sooraj/public_html/copierchoice/application/views/template/template.php</file>
-            <file>file:/home/sooraj/public_html/copierchoice/application/controllers/Welcome.php</file>
-            <file>file:/home/sooraj/public_html/copierchoice/DB_Altration/queries.sql</file>
-            <file>file:/home/sooraj/public_html/copierchoice/application/views/template/admin.php</file>
+            <file>file:/home/sooraj/public_html/copierchoice/index.php</file>
+            <file>file:/home/sooraj/public_html/copierchoice/application/controllers/Web.php</file>
+            <file>file:/home/sooraj/public_html/copierchoice/application/views/multi-form.php</file>
+            <file>file:/home/sooraj/public_html/copierchoice/application/config/routes.php</file>
+            <file>file:/home/sooraj/public_html/copierchoice/application/views/rfq-form.php</file>
+            <file>file:/home/sooraj/public_html/copierchoice/application/views/leadtype-form.php</file>
+            <file>file:/home/sooraj/public_html/copierchoice/assets/js/cc-app.js</file>
+            <file>file:/home/sooraj/public_html/copierchoice/application/models/Web_model.php</file>
         </group>
     </open-files>
 </project-private>
