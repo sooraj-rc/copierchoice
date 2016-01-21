@@ -123,7 +123,7 @@ $("#continue").click(function (e) {
     var value2 = '';
     value1 = $('input:radio[name=qtype1]:checked').val();
     value2 = $('input:radio[name=qtype2]:checked').val();
-
+    //validate first two questions
     if (!$('input:radio[name=qtype1]:checked').val() || !$('input:radio[name=qtype2]:checked').val()) {
         $("#error").html("<div class='alert alert-danger'>Please choose your answers!</div>");
         return false;

@@ -68,3 +68,6 @@ INSERT INTO `lead_types` (`lead_type_id`, `lead_type`, `status`) VALUES
 (8, 'Managed Print Service', 'A');
 
 
+-- Question and answer and related tables with data
+
+

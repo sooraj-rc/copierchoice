@@ -1,9 +1,3 @@
-<style>
-    .step{
-        min-height: 420px !important;
-        font-size: 18px;
-    }
-</style>
 <div class="container">
     <br><br>
     <form class="form-horizontal form" action="manu.php">
@@ -23,7 +17,7 @@
                     <div class="step" data-id="<?php echo $qa['question_id']; ?>" data-type="<?php echo $qa['answer_type']; ?>">
                         <div class="form-group">
                             <label for="name"><?php echo $i++ . ') ' . $qa['question'] ?></label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-10 ans-area">
                                 <br>
                                 <?php
                                 foreach ($qa['answers'] as $ans) {
@@ -36,7 +30,7 @@
                                 }
                                 if ($specification == "show_brand") {
                                     foreach ($brands as $brand) {
-                                        echo '<input type="checkbox" name="qn_' . $qa['question_id'] . '[]"> &nbsp;' . $brand['maker'] . '<br>';
+                                        echo '<input type="checkbox" name="ans_' . $qa['question_id'] . '" value="'.$brand['maker'].'"> &nbsp;' . $brand['maker'] . '<br>';
                                     }
                                 } else if ($specification == "show_textarea") {
                                     echo '<textarea class="form-control" name="qncomment_' . $qa['question_id'] . '"></textarea>';
@@ -45,9 +39,9 @@
                             </div>
                         </div>
                     </div>
-    <?php
-}
-?>                    
+                    <?php
+                }
+                ?>                    
                 <div class="step">
                     <div class="form-group">                        
                         <div class="col-sm-10">
